@@ -89,7 +89,6 @@ const asyncSlice = createSlice({
     builder.addCase(getArticleAdditional.fulfilled, (state, action) => {
       state.isLoading = false;
       const newArticle = action.payload?.newArticles
-      console.log(newArticle)
       if(newArticle){
         state.list = [state.list, ...newArticle];
       }

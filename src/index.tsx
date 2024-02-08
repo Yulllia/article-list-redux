@@ -13,6 +13,7 @@ import NewsPage from "./components/asyncArticle/NewsPage";
 import UserArticlesPage from "./pages/UserArticlesPage";
 import Spinner from "react-bootstrap/esm/Spinner";
 import "react-bootstrap"
+import NoMatch from "./components/layout/NoMatch";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "news",
         element: <NewsPage />,
+      },
+      {
+        path: "*",
+        element: <NoMatch />,
       },
     ],
   },

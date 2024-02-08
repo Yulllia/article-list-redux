@@ -1,30 +1,48 @@
 .card-article {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  overflow: hidden;
+  position: relative;
 }
-  
+
 .card-article:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .imageCard {
-    height: 200px;
-    object-fit: cover;
-    width: 100%;
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
 }
 .trashIcon {
-    position: absolute;
-    left: 0;
-    margin: 5px;
-    cursor: pointer;
-    width: 25px;
-    height: 25px;
+  position: absolute;
+  left: 0;
+  margin: 5px;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
 }
 .pinnedIcon {
-    position: absolute;
-    right: 0;
-    margin: 5px;
-    cursor: pointer;
-    width: 25px;
-    height: 25px;  
+  position: absolute;
+  right: 0;
+  margin: 5px;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+}
+
+.title {
+    margin-top: 10px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to two lines */
+    -webkit-box-orient: vertical;
+}
+
+.description {
+    margin: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Limit to two lines */
+    -webkit-box-orient: vertical;
 }

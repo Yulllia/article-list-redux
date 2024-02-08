@@ -45,12 +45,12 @@ function ArticleCard(props: { article: ArticleItem; news?: string | null }) {
           onClick={() => handlePinItem(article.id)}
         />
       )}
-      <div className="container">
-        <h4>
+      <div className="container mh-100"  style={{height: "220px"}}>
+        <h4 className="title">
           <b>{article.title}</b>
         </h4>
         <p>{article.author}</p>
-        <p>{article.description}</p>
+        <p className="description">{article.description}</p>
       </div>
     </div>
   );
