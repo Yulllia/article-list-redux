@@ -27,7 +27,7 @@ function ArticleCard(props: { article: ArticleItem; news?: string | null }) {
       <img
         src={article.urlToImage ?? NoImage}
         alt={article.urlToImage}
-        className="imageCard"
+        className="imageCard img-fluid"
       />
       {!news && (
         <img

@@ -62,16 +62,18 @@ function NewsPage() {
   return (
     <div>
       <h3 className="display-flex text-center mt-4 mb-5">News Articles</h3>
-      <InputGroup className="mb-5 mt-3 w-75 d-flex align-items-center mx-auto">
+      <InputGroup className="mb-2 mt-3 w-75 d-flex align-items-center mx-auto">
         <SearchBar newsList={"news"} />
-        <Button
-          className="rounded"
+      </InputGroup>
+      <div className="rounded text-center mx-auto display-flex mt-3 mb-5">
+      <Button
+          className="rounded text-center mx-auto display-flex"
           variant="primary"
           onClick={handleAdditionalArticles}
         >
           Get 10 articles
         </Button>
-      </InputGroup>
+      </div>
       {!articles?.length && (
         <h4 className="display-flex text-center">
           Search not found anything. Try again!
