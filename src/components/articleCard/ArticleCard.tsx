@@ -5,6 +5,7 @@ import "./ArticleCard.css";
 import Trash from "../../assets/trash.png";
 import Pinned from "../../assets/pinned.png";
 import UnPinned from "../../assets/unpinned.png";
+import NoImage from "../../assets/no-image.jpg";
 
 function ArticleCard(props: { article: ArticleItem; news?: string | null }) {
   const { article, news = null } = props;
@@ -24,7 +25,7 @@ function ArticleCard(props: { article: ArticleItem; news?: string | null }) {
   return (
     <div key={article.id} className="card card-article mb-3">
       <img
-        src={article.urlToImage}
+        src={article.urlToImage ?? NoImage}
         alt={article.urlToImage}
         className="imageCard"
       />

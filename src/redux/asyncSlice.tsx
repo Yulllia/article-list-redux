@@ -12,10 +12,10 @@ const pageSize = 10;
 
 export const getArticleAsync = createAsyncThunk(
   "asyncArticles/getTodosAsync",
-  async () => {
+  async (search?: string) => {
     try {
       const resp = await fetch(
-        `https://newsapi.org/v2/everything?q=null&apiKey=${process.env.REACT_APP_API_URL}&pageSize=${pageSize}`
+        `https://newsapi.org/v2/everything?q=${search?.length ? search : null}&apiKey=${process.env.REACT_APP_API_URL}&pageSize=${pageSize}`
       );
       if (!resp.ok) {
         throw new Error(`HTTP error! Status: ${resp.status}`);

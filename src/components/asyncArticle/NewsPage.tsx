@@ -12,15 +12,12 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ArticleCard from "../articleCard/ArticleCard";
 import SearchBar from "../search/SearchBar";
-import { useState } from "react";
-import { filterArticles } from "../../utils/utils";
+import { Button, InputGroup } from "react-bootstrap";
 
 function NewsPage() {
   const dispatch = useDispatch();
   const list = useSelector((state: ListAsync) => state.asyncArticles.list);
-  const search = useSelector((state: AsyncArticles) => state.asyncArticles.searchValue);
-  const [filteredArticles, setFilteredArticles] = useState<ArticleItem[] | undefined>([]);
-  
+
   const isLoading = useSelector(
     (state: AsyncArticles) => state.asyncArticles.isLoading
   );
@@ -34,12 +31,7 @@ function NewsPage() {
     dispatch(getArticleAsync());
   }, [dispatch]);
 
-
-  useEffect(() => {
-    const newFilteredArticles = filterArticles(articles, search);
-    setFilteredArticles(newFilteredArticles);
-  }, [articles, search]);
-
+  const handleAdditionalArticles = () => {};
 
   if (isLoading) {
     return (
@@ -56,12 +48,22 @@ function NewsPage() {
   return (
     <div>
       <h3 className="display-flex text-center mt-4 mb-5">News Articles</h3>
-      {articles && articles?.length > 0 && <SearchBar newsList={"news"}/>}
+      <InputGroup className="mb-5 mt-3 w-75 d-flex align-items-center mx-auto">
+        <SearchBar newsList={"news"} />
+        <Button className="rounded" variant="primary" onClick={handleAdditionalArticles}>
+           Get 10 articles 
+        </Button>
+      </InputGroup>
+      {!articles?.length && <h4 className="display-flex text-center">Search not found anything. Try again!</h4>}
       <Container className="mb-3">
         <Row>
-          {filteredArticles?.map((article: ArticleItem) => (
+          {articles?.map((article: ArticleItem) => (
             <Col key={article.title} xs={12} sm={6} md={5} lg={4}>
-              <ArticleCard key={article.title} article={article} news={'news'}/>
+              <ArticleCard
+                key={article.title}
+                article={article}
+                news={"news"}
+              />
             </Col>
           ))}
         </Row>

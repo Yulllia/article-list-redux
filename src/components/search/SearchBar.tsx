@@ -3,7 +3,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { useDispatch, useSelector } from "react-redux";
 import { AsyncArticles, List } from "../../interfaces/interface";
 import { setSearchTerm } from "../../redux/articlesSlice";
-import { setSearchValue } from "../../redux/asyncSlice";
+import { getArticleAsync, setSearchValue } from "../../redux/asyncSlice";
 
 function SearchBar(props: { newsList?: string }) {
   const { newsList = null } = props;
@@ -21,12 +21,18 @@ function SearchBar(props: { newsList?: string }) {
     dispatch(setSearchValue(value));
   };
 
+  const onSearch = () =>{
+     if(newsList?.length){
+      dispatch(getArticleAsync(searchNews));
+     }
+  }
+ 
   return (
-    <InputGroup className="mb-5 mt-3 w-75 d-flex align-items-center mx-auto">
-      <InputGroup.Text id="inputGroup-sizing-sm">Search</InputGroup.Text>
+    <InputGroup className={`${!newsList && "mb-5 mt-3"} w-75 d-flex align-items-center mx-auto`}>
+      <InputGroup.Text role="button" className="btn btn-secondary" id="inputGroup-sizing-sm" onClick={onSearch}>Search</InputGroup.Text>
       <Form.Control
         aria-label="Search input for articles"
-        value={newsList ? searchNews : search}
+        value={searchNews ? searchNews : search}
         onChange={(e) =>
           (newsList?.length ? handleSearchChangeNews : handleSearchChange)(
             e.target.value
