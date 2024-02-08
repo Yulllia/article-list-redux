@@ -1,18 +1,18 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getArticleAdditional, getArticleAsync, setTotalQuantity } from "../../redux/asyncSlice";
+import { getArticleAdditional, getArticleAsync, setTotalQuantity } from "../redux/asyncSlice";
 import {
   ArticleItem,
   ArticlesAdditional,
   AsyncArticles,
   ListAsync,
-} from "../../interfaces/interface";
+} from "../interfaces/interface";
 import Spinner from "react-bootstrap/Spinner";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import ArticleCard from "../articleCard/ArticleCard";
-import SearchBar from "../search/SearchBar";
+import ArticleCard from "../components/articleCard/ArticleCard";
+import SearchBar from "../components/search/SearchBar";
 import { Button, InputGroup } from "react-bootstrap";
 
 function NewsPage() {

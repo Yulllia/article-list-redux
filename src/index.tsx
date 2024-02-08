@@ -9,7 +9,7 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from "react-router-dom";
-import NewsPage from "./components/asyncArticle/NewsPage";
+import NewsPage from "./pages/NewsPage";
 import UserArticlesPage from "./pages/UserArticlesPage";
 import Spinner from "react-bootstrap/esm/Spinner";
 import "react-bootstrap"

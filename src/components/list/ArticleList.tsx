@@ -31,7 +31,7 @@ function ArticleList() {
           ))}
         </Row>
       </Container>
-      {!filteredArticles?.length && (
+      {articles.length && !filteredArticles?.length && (
         <h4 className="display-flex text-center">
           Search not found anything. Try again!
         </h4>
