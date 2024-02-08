@@ -5,7 +5,7 @@ import ArticleList from '../components/list/ArticleList'
 function UserArticlesPage() {
   return (
     <div>
-      <h4>Add new article</h4>
+      <h4 className="display-flex mt-4 text-center">Add new article</h4>
       <AddForm />
       <ArticleList />
     </div>

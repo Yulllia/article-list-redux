@@ -3,7 +3,7 @@ export interface ArticleItem {
   title: string;
   description: string;
   author: string;
-  image: string;
+  urlToImage: string;
 }
 
 export interface List {

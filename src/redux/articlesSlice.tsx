@@ -18,7 +18,7 @@ export const reducerAddForm = (state: ArticleItem, action: ArticleAction) => {
     case "RESET_FORM":
       return {
         id: 0,
-        image: "",
+        urlToImage: "",
         author: "",
         description: "",
         title: "",
@@ -38,7 +38,7 @@ const articleSlice = createSlice({
         title: action.payload.title,
         author: action.payload.author,
         description: action.payload.description,
-        image: action.payload.image,
+        urlToImage: action.payload.urlToImage,
       })
     },
     deleteArticle: (state, action) => {

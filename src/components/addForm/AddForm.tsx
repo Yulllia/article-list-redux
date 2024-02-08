@@ -11,7 +11,7 @@ function AddForm() {
     id: Date.now(),
     description: "",
     author: "",
-    image: "",
+    urlToImage: "",
     title: "",
   });
 
@@ -31,8 +31,7 @@ function AddForm() {
         const baseData = reader.result as string;
         const blob = dataURItoBlob(baseData);
         const url = URL.createObjectURL(blob);
-
-        handleInputChange("image", url);
+        handleInputChange("urlToImage", url);
         setFileName(target.form);
       };
       reader.readAsDataURL(file);
