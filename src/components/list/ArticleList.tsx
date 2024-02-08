@@ -6,19 +6,16 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useEffect, useState } from "react";
+import { filterArticles } from "../../utils/utils";
 
 function ArticleList() {
   const articles = useSelector((state: List) => state.articles.list);
   const search = useSelector((state: List) => state.articles.searchTerm);
 
-  const [filteredArticles, setFilteredArticles] = useState<ArticleItem[]>([]);
+  const [filteredArticles, setFilteredArticles] = useState<ArticleItem[] | undefined>([]);
 
   useEffect(() => {
-    const newFilteredArticles = articles.filter(
-      (article) =>
-        article.title.toLowerCase().includes(search.toLowerCase()) ||
-        article.description.toLowerCase().includes(search.toLowerCase())
-    );
+    const newFilteredArticles = filterArticles(articles, search);
     setFilteredArticles(newFilteredArticles);
   }, [articles, search]);
 

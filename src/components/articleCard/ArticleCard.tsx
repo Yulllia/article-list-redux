@@ -6,10 +6,8 @@ import Trash from "../../assets/trash.png";
 import Pinned from "../../assets/pinned.png";
 import UnPinned from "../../assets/unpinned.png";
 
-function ArticleCard(props: { article: ArticleItem, news?: string | null  }) {
+function ArticleCard(props: { article: ArticleItem; news?: string | null }) {
   const { article, news = null } = props;
-
-  console.log(article)
 
   const pinnedItem = useSelector((state: List) => state.articles.pinnedItem);
 
@@ -25,29 +23,27 @@ function ArticleCard(props: { article: ArticleItem, news?: string | null  }) {
 
   return (
     <div key={article.id} className="card card-article mb-3">
-      <img src={article.urlToImage} alt={article.urlToImage} className="imageCard"/>
       <img
-        src={Trash}
-        alt="trash"
-        className="trashIcon"
-        onClick={() => handleRemoveArticle(article.id)}
+        src={article.urlToImage}
+        alt={article.urlToImage}
+        className="imageCard"
       />
-      {pinnedItem === article.id ? (
+      {!news && (
         <img
-          src={Pinned}
-          alt="pinned"
-          className="pinnedIcon"
-          onClick={() => handlePinItem(article.id)}
+          src={Trash}
+          alt="trash"
+          className="trashIcon"
+          onClick={() => handleRemoveArticle(article.id)}
         />
-      ) : (
+      )}
+      {!news && (
         <img
-          src={UnPinned}
-          alt="unPinned"
+          src={pinnedItem === article.id ? Pinned : UnPinned}
+          alt={pinnedItem === article.id ? "pinned" : "unPinned"}
           className="pinnedIcon"
           onClick={() => handlePinItem(article.id)}
         />
       )}
-
       <div className="container">
         <h4>
           <b>{article.title}</b>

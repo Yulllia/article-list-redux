@@ -5,6 +5,7 @@ const initialState: InitialStateAsyncArtivles = {
   list: [],
   isLoading: false,
   error: '',
+  searchValue: '',
 };
 
 const pageSize = 10;
@@ -34,7 +35,11 @@ export const getArticleAsync = createAsyncThunk(
 const asyncSlice = createSlice({
   name: "asyncArticles",
   initialState,
-  reducers: {},
+  reducers: {
+    setSearchValue: (state, action) => {
+      state.searchValue = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getArticleAsync.pending, (state) => {
       state.isLoading = true;
@@ -49,5 +54,6 @@ const asyncSlice = createSlice({
     });
   },
 });
+export const { setSearchValue } = asyncSlice.actions;
 
 export default asyncSlice.reducer;

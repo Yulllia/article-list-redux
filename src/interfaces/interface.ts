@@ -24,6 +24,7 @@ export interface InitialStateAsyncArtivles {
   list: ArticleItem[] | undefined;
   isLoading: boolean;
   error: undefined | string;
+  searchValue: string;
 }
 
 export interface InitialState {
