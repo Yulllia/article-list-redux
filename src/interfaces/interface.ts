@@ -10,12 +10,13 @@ export interface List {
   articles: InitialState;
 }
 export interface ListAsync {
-    asyncArticles: {
-        list: {
-          articles: ArticleItem[] | undefined;
-        }
-    }
-  }
+  asyncArticles: {
+    list: {
+      articles: ArticleItem[] | undefined;
+    };
+    totalPage: number
+  };
+}
 
 export interface AsyncArticles {
   asyncArticles: InitialStateAsyncArtivles;
@@ -25,6 +26,7 @@ export interface InitialStateAsyncArtivles {
   isLoading: boolean;
   error: undefined | string;
   searchValue: string;
+  totalPage: number
 }
 
 export interface InitialState {
@@ -36,3 +38,9 @@ export interface InitialState {
 export type ArticleAction =
   | { type: "SET_FIELD"; field: keyof ArticleItem; value: string }
   | { type: "RESET_FORM" };
+
+export interface ArticlesAdditional {
+  titles: string[] | undefined;
+  totalPages: number;
+  search?: string | null
+}

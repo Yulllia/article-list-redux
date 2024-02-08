@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import { ArticleItem, List } from "../../interfaces/interface";
-import "./ArticleList.css";
 import ArticleCard from "../articleCard/ArticleCard";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";

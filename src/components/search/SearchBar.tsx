@@ -1,15 +1,19 @@
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { useDispatch, useSelector } from "react-redux";
-import { AsyncArticles, List } from "../../interfaces/interface";
+import { ArticleItem, ArticlesAdditional, AsyncArticles, List, ListAsync } from "../../interfaces/interface";
 import { setSearchTerm } from "../../redux/articlesSlice";
-import { getArticleAsync, setSearchValue } from "../../redux/asyncSlice";
+import { getArticleAdditional, getArticleAsync, setSearchValue } from "../../redux/asyncSlice";
 
 function SearchBar(props: { newsList?: string }) {
   const { newsList = null } = props;
 
   const dispatch = useDispatch();
   const search = useSelector((state: List) => state.articles.searchTerm);
+  const list = useSelector((state: ListAsync) => state.asyncArticles.list);
+  const total = useSelector((state: ListAsync) => state.asyncArticles.totalPage);
+
+  const { articles } = list
   const searchNews = useSelector(
     (state: AsyncArticles) => state.asyncArticles.searchValue
   );
@@ -24,6 +28,15 @@ function SearchBar(props: { newsList?: string }) {
   const onSearch = () =>{
      if(newsList?.length){
       dispatch(getArticleAsync(searchNews));
+      const uniqueExistingArticlesTitles = articles?.map(
+        (article: ArticleItem) => article.title
+      );
+      const articlesAdditional: ArticlesAdditional = {
+        search: searchNews,
+        titles: uniqueExistingArticlesTitles,
+        totalPages: total
+      }
+      dispatch(getArticleAdditional(articlesAdditional));
      }
   }
  
